@@ -1,0 +1,6 @@
+<ul class="adminMenu">
+  <li><a href="<{xoops_cooluri dirname=$dirname dataname=thumbnail}>"><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL}></a></li>
+  <{foreach item=menu from=$adminMenu key=k}>
+  <li><a href="<{$menu.link}>"><{$menu.title}></a></li>
+  <{/foreach}>
+</ul>

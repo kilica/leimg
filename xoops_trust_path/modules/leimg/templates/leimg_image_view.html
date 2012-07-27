@@ -1,0 +1,18 @@
+<div id="leimg">
+<h1><{$smarty.const._VIEW}></h1>
+<dl class="viewDetail">
+  <dt><{$smarty.const._MD_LEIMG_LANG_IMAGE_ID}></dt>
+  <dd><{$object->getShow('image_id')}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_TITLE}></dt>
+  <dd><{$object->getShow('title')}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_SET_ID}></dt>
+  <dd><{$Set_idTitle}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_FILE_NAME}></dt>
+  <dd><{$object->getShow('file_name')}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+</dl>
+</div>

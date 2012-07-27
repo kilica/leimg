@@ -1,0 +1,34 @@
+<div id="leimg">
+<h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL}> <{$smarty.const._LIST}></h1>
+<p>
+<{$smarty.const._MD_LEIMG_DESC_ABOUT_LEIMG}>
+</p>
+<{if count($clientList) > 0}>
+<{foreach item=client from=$clientList.object key=k}>
+<div class="module">
+  <h2><{$clientList.dirname[$k]}> - <{$clientList.dataname[$k]}></h2>
+  <ul class="horizontal">
+    <li><a href="<{xoops_cooluri dirname=$dirname dataname=blank action=edit query="dir=`$clientList.dirname[$k]`&dtname=`$clientList.dataname[$k]`"}>"><{$smarty.const._MD_LEIMG_LANG_UPLOAD_BLANK_IMAGE}></a></li>
+  </ul>
+
+  <h3>
+  	<{$smarty.const._MD_LEIMG_LANG_THUMBNAIL}> <{$smarty.const._LIST}> &nbsp; 
+  	<span class="thumbnail_menu">
+  		<a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit query="dirname=`$clientList.dirname[$k]`&dataname=`$clientList.dataname[$k]`"}>"><{$smarty.const._MD_LEIMG_LANG_ADD_A_NEW_THUMBNAIL}></a> &nbsp; | &nbsp;
+    	<a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=remake query="dirname=`$clientList.dirname[$k]`&dataname=`$clientList.dataname[$k]`"}>"><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_REMAKE}></a>
+  	</span>
+  </h3>
+  <ul class="setting">
+    <{foreach item=obj from=$client name=object}>
+    <li><span class="num"><{$obj->getShow('tsize')}></span> <{$smarty.const._MD_LEIMG_LANG_MAX_WIDTH}>:<{$obj->getShow('max_width')}> px / <{$smarty.const._MD_LEIMG_LANG_MAX_HEIGHT}>:<{$obj->getShow('max_height')}> px / 
+      <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('thumbnail_id') action=edit}>"><{$smarty.const._EDIT}></a>
+      <a href="<{xoops_cooluri dirname=$dirname dataname=$dataname data_id=$obj->getShow('thumbnail_id') action=delete}>"><{$smarty.const._DELETE}></a>
+    </li>
+    <{foreachelse}>
+      <{$smarty.const._MD_LEIMG_MESSAGE_NO_THUMBNAIL_SETTING}>
+    <{/foreach}>
+  </ul>
+</div>
+<{/foreach}>
+<{/if}>
+</div>

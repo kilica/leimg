@@ -1,0 +1,29 @@
+<div id="leimg">
+<h1><{$smarty.const._MD_LEIMG_LANG_IMAGE_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_LEIMG_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=ImageDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_LEIMG_LANG_IMAGE_ID}></dt>
+  <dd><{$object->getShow('image_id')}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_TITLE}></dt>
+  <dd><{$object->getShow('title')}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_UID}></dt>
+  <dd><{$object->getShow('uid')|xoops_user:user_name}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_SET_ID}></dt>
+  <dd><{$Set_idTitle}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_FILE_NAME}></dt>
+  <dd><{$object->getShow('file_name')}></dd>
+  <dt><{$smarty.const._MD_LEIMG_LANG_POSTTIME}></dt>
+  <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=image_id value=$actionForm->get('image_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

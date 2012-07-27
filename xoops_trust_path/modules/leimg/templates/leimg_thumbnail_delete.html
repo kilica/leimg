@@ -1,0 +1,19 @@
+<div id="leimg">
+<h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_DELETE}></h1>
+
+<div class="confirm"><{$smarty.const._MD_LEIMG_MESSAGE_CONFIRM_DELETE}></div>
+
+<form action="./index.php?action=ThumbnailDelete" method="post">
+  <dl>
+  <dt><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_ID}></dt>
+  <dd><{$object->getShow('thumbnail_id')}></dd>
+
+    <dd>
+      <{xoops_token form=$actionForm}>
+      <{xoops_input type=hidden name=thumbnail_id value=$actionForm->get('thumbnail_id')}>
+      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
+      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
+    </dd>
+  </dl>
+</form>
+</div>

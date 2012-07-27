@@ -1,0 +1,94 @@
+#leimg{
+    font-size: 15px;
+    line-height:    2em;
+}
+
+#leimg h1{
+    border: none;
+    margin-bottom:  15px;
+    font-size:  1.5em
+}
+
+#leimg h2{
+    border: none;
+    margin-bottom:  15px;
+    font-size:  1.3em
+}
+
+#leimg h3{
+    border: none;
+    margin: 0px 0px 0px 0px;
+    font-size:  1.1em
+}
+
+#leimg .desc{
+    border: 1px solid #DDDDDD;
+    margin: 10px 20px 10px 20px;
+    padding:    10px;
+}
+
+#leimg .clear{
+    clear:  both;
+}
+
+#leimgMenu ul li{
+    width:  50px;
+    float:  left;
+    margin-left:    25px;
+    margin-bottom:  25px;
+    list-style-type: none;
+}
+
+
+/* 2 column table */
+
+#leimg .viewDetail dt{
+clear:both;
+width:140px;
+float:left;
+margin-top:10px;
+}
+
+#leimg .viewDetail dd{
+float:left;
+margin-top:10px;
+}
+
+/* Form */
+
+#leimg form{
+    
+}
+
+#leimg form dt{
+clear:both;
+width:140px;
+float:left;
+margin-top:10px;
+}
+
+#leimg form dd{
+float:left;
+margin-top:10px;
+}
+
+#leimg form dd.description{
+
+}
+
+#leimg .module {
+	border-bottom:1px solid #999999;
+	margin-top:20px;
+}
+
+#leimg h3 .thumbnail_menu {
+	font-size:9pt;
+	font-weight:normal;
+}
+
+#leimg .setting {
+	margin : 10px;
+	padding : 10px;
+	background-color:#EEEEEE;
+}
+
