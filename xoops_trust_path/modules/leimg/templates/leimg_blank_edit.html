@@ -1,18 +1,20 @@
 <div id="leimg">
-<h1><{$smarty.const._MD_LEIMG_LANG_UPLOAD_BLANK_IMAGE}> : <{$dir}> - <{$dtname}></h1>
+<div class="page-header">
+  <h1><{$smarty.const._MD_LEIMG_LANG_UPLOAD_BLANK_IMAGE}> : <{$dir}> - <{$dtname}></h1>
+</div>
 <p>
 <{$smarty.const._MD_LEIMG_DESC_UPLOAD_BLANK_IMAGE}>
 </p>
 
 <{if $actionForm->hasError()}>
-  <ul class="error">
+  <ul class="alert alert-error">
     <{foreach item=message from=$actionForm->getErrorMessages()}>
       <li><{$message|xoops_escape}></li>
     <{/foreach}>
   </ul>
 <{/if}>
 <form action="<{xoops_cooluri dirname=$dirname dataname=blank action=edit}>" method="post" enctype="multipart/form-data">
-  <dl>
+  <dl class="dl-horizontal">
     <dt><{$smarty.const._MD_LEIMG_LANG_BLANK_IMAGE}></dt>
     <dd>
       <{if $blankImage->hasBlankImage()}>
@@ -20,15 +22,13 @@
       <{/if}>
       <{xoops_input type=file name=blankimage size=30}>
     </dd>
-
-    <dt></dt>
-    <dd>
+  </dl>
+  <div class="form-actions">
       <{xoops_token form=$actionForm}>
       <{xoops_input type=hidden name=dirname value=$dir}>
       <{xoops_input type=hidden name=dataname value=$dtname}>
-      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
-      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
-    </dd>
-  </dl>
+      <button class="btn btn-primary" type="submit" value="<{$smarty.const._SUBMIT}>"><{$smarty.const._SUBMIT}></button>
+      <button class="btn" type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"><{$smarty.const._CANCEL}></button>
+  </div>
 </form>
 </div>

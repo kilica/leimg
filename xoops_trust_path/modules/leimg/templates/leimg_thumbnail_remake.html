@@ -1,7 +1,9 @@
 <div id="leimg">
-<h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_REMAKE}> <{$target_dirname|xoops_escape}> - <{$target_dataname|xoops_escape}></h1>
+<div class="page-header">
+    <h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_REMAKE}> <{$target_dirname|xoops_escape}> - <{$target_dataname|xoops_escape}></h1>
+</div>
 <{if $actionForm->hasError()}>
-  <ul class="error">
+  <ul class="alert alert-error">
     <{foreach item=message from=$actionForm->getErrorMessages()}>
       <li><{$message|xoops_escape}></li>
     <{/foreach}>
@@ -13,8 +15,8 @@
     <{xoops_token form=$actionForm}>
     <{xoops_input type=hidden name=dirname value=$actionForm->get('dirname')}>
     <{xoops_input type=hidden name=dataname value=$actionForm->get('dataname')}>
-    <input type="submit" value="<{$smarty.const._SUBMIT}>" />
-    <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
+    <button class="btn btn-primary" type="submit" value="<{$smarty.const._SUBMIT}>"><{$smarty.const._SUBMIT}></button>
+    <button class="btn" type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"><{$smarty.const._CANCEL}></button>
   </fieldset>
 </form>
 </div>

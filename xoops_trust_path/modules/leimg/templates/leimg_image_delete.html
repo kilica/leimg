@@ -1,10 +1,12 @@
 <div id="leimg">
+<div class="page-header">
 <h1><{$smarty.const._MD_LEIMG_LANG_IMAGE_DELETE}></h1>
+</div>
 
-<div class="confirm"><{$smarty.const._MD_LEIMG_MESSAGE_CONFIRM_DELETE}></div>
+<div class="alert alert-warning"><{$smarty.const._MD_LEIMG_MESSAGE_CONFIRM_DELETE}></div>
 
-<form action="./index.php?action=ImageDelete" method="post">
-  <dl>
+<form class="form-horizontal" action="./index.php?action=ImageDelete" method="post">
+  <dl class="dl-horizontal">
   <dt><{$smarty.const._MD_LEIMG_LANG_IMAGE_ID}></dt>
   <dd><{$object->getShow('image_id')}></dd>
   <dt><{$smarty.const._MD_LEIMG_LANG_TITLE}></dt>
@@ -17,13 +19,12 @@
   <dd><{$object->getShow('file_name')}></dd>
   <dt><{$smarty.const._MD_LEIMG_LANG_POSTTIME}></dt>
   <dd><{$object->getShow('posttime')|xoops_formattimestamp:m}></dd>
-
-    <dd>
+  </dl>
+  <div class="form-actions">
       <{xoops_token form=$actionForm}>
       <{xoops_input type=hidden name=image_id value=$actionForm->get('image_id')}>
-      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
-      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
-    </dd>
-  </dl>
+      <button class="btn btn-primary" type="submit" class="formButton" value="<{$smarty.const._DELETE}>"><{$smarty.const._DELETE}></button>
+      <button class="btn" type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"><{$smarty.const._DELETE}></button>
+  </div>
 </form>
 </div>

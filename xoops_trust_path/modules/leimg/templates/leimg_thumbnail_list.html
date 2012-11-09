@@ -1,5 +1,7 @@
 <div id="leimg">
-<h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL}> <{$smarty.const._LIST}></h1>
+<div class="page-header">
+  <h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL}> <{$smarty.const._LIST}></h1>
+</div>
 <p>
 <{$smarty.const._MD_LEIMG_DESC_ABOUT_LEIMG}>
 </p>
@@ -7,7 +9,7 @@
 <{foreach item=client from=$clientList.object key=k}>
 <div class="module">
   <h2><{$clientList.dirname[$k]}> - <{$clientList.dataname[$k]}></h2>
-  <ul class="horizontal">
+  <ul class="pull-left">
     <li><a href="<{xoops_cooluri dirname=$dirname dataname=blank action=edit query="dir=`$clientList.dirname[$k]`&dtname=`$clientList.dataname[$k]`"}>"><{$smarty.const._MD_LEIMG_LANG_UPLOAD_BLANK_IMAGE}></a></li>
   </ul>
 

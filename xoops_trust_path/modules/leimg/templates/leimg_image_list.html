@@ -1,11 +1,14 @@
 <div id="leimg">
+<div class="page-header">
 <h1><{$smarty.const._LIST}></h1>
+</div>
+
 <ul class="toptab">
   <li><a href="<{xoops_cooluri dirname=$dirname dataname=$dataname action=edit}>"><{$smarty.const._MD_LEIMG_LANG_ADD_A_NEW_IMAGE}></a></li>
 </ul>
+
 <div class="gallery">
   <{foreach item=obj from=$objects}>
-    <tr class="<{cycle values='odd,even'}>">
   <div class="photo">
     <{$obj->makeImageTag()}>
     <div><{$obj->getShow('title')}></div>

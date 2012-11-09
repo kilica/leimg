@@ -1,45 +1,54 @@
 <div id="leimg">
-<h1><{$smarty.const._MD_LEIMG_LANG_IMAGE_EDIT}></h1>
+<div class="page-header">
+  <h1><{$smarty.const._MD_LEIMG_LANG_IMAGE_EDIT}></h1>
+</div>
 <{if $actionForm->hasError()}>
-  <ul class="error">
+  <ul class="alert alert-error">
     <{foreach item=message from=$actionForm->getErrorMessages()}>
       <li><{$message|xoops_escape}></li>
     <{/foreach}>
   </ul>
 <{/if}>
-<form action="index.php?action=ImageEdit" method="post">
-  <dl>
+<form class="form-horizontal"action="index.php?action=ImageEdit" method="post">
 
-  <{xoops_input type=hidden name=IMAGE_ID value=$actionForm->get('image_id')}>
+  <div class="control-group">
+  <dt class="required"><{$smarty.const._MD_LEIMG_LANG_TITLE}></label>
+  <div class="controls"><{xoops_input type=text name=title value=$actionForm->get('title') size=20 maxlength=255 class="required"}></div>
+  </div>
+  <div class="control-group">
+    <label><{$smarty.const._MD_LEIMG_LANG_DATA_ID}></label>
+    <div class="controls"><{xoops_input type=text name=data_id value=$actionForm->get('data_id') size=10}></div>
+  </div>
 
-  <dt class="required"><{$smarty.const._MD_LEIMG_LANG_TITLE}></dt>
-  <dd><{xoops_input type=text name=title value=$actionForm->get('title') size=20 maxlength=255 class="required"}></dd>
+    <div class="control-group">
+    <label><{$smarty.const._MD_LEIMG_LANG_NUM}></label>
+  <div class="controls"><{xoops_input type=text name=num value=$actionForm->get('num') size=10}></div>
 
-  <dt><{$smarty.const._MD_LEIMG_LANG_DATA_ID}></dt>
-  <dd><{xoops_input type=text name=data_id value=$actionForm->get('data_id') size=10}></dd>
+  <div class="control-group">
+    <label><{$smarty.const._MD_LEIMG_LANG_FILE_NAME}></label>
+    <div class="controls"><{xoops_input type=text name=file_name value=$actionForm->get('file_name') size=20 maxlength=60}></div>
+  </div>
 
-  <dt><{$smarty.const._MD_LEIMG_LANG_NUM}></dt>
-  <dd><{xoops_input type=text name=num value=$actionForm->get('num') size=10}></dd>
+  <div class="control-group">
+    <label><{$smarty.const._MD_LEIMG_LANG_FILE_TYPE}></label>
+    <div class="controls"><{xoops_input type=text name=file_type value=$actionForm->get('file_type') size=10}></div>
+  </div>
 
-  <dt><{$smarty.const._MD_LEIMG_LANG_FILE_NAME}></dt>
-  <dd><{xoops_input type=text name=file_name value=$actionForm->get('file_name') size=20 maxlength=60}></dd>
+  <div class="control-group">
+    <label><{$smarty.const._MD_LEIMG_LANG_IMAGE_WIDTH}></label>
+    <div class="controls"><{xoops_input type=text name=image_width value=$actionForm->get('image_width') size=10}></div>
+  </div>
 
-  <dt><{$smarty.const._MD_LEIMG_LANG_FILE_TYPE}></dt>
-  <dd><{xoops_input type=text name=file_type value=$actionForm->get('file_type') size=10}></dd>
+  <div class="control-group">
+    <label><{$smarty.const._MD_LEIMG_LANG_IMAGE_HEIGHT}></label>
+    <div class="controls"><{xoops_input type=text name=image_height value=$actionForm->get('image_height') size=10}></div>
+  </div>
 
-  <dt><{$smarty.const._MD_LEIMG_LANG_IMAGE_WIDTH}></dt>
-  <dd><{xoops_input type=text name=image_width value=$actionForm->get('image_width') size=10}></dd>
-
-  <dt><{$smarty.const._MD_LEIMG_LANG_IMAGE_HEIGHT}></dt>
-  <dd><{xoops_input type=text name=image_height value=$actionForm->get('image_height') size=10}></dd>
-
-    <dt></dt>
-    <dd>
+  <div class="form-actions">
       <{xoops_token form=$actionForm}>
       <{xoops_input type=hidden name=image_id value=$actionForm->get('image_id')}>
-      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
-      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
-    </dd>
-  </dl>
+      <button class="btn btn-primary" type="submit" value="<{$smarty.const._SUBMIT}>"><{$smarty.const._SUBMIT}></button>
+      <button class="btn" type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"><{$smarty.const._CANCEL}></button>
+  </div>
 </form>
 </div>

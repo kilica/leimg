@@ -1,43 +1,35 @@
 <div id="leimg">
-<h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_EDIT}> <{$object->getShow('dirname')}> - <{$object->getShow('dataname')}></h1>
+<div class="page-header">
+    <h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_EDIT}> <{$object->getShow('dirname')}> - <{$object->getShow('dataname')}></h1>
+</div>
 <{if $actionForm->hasError()}>
-  <ul class="error">
+  <ul class="alert alert-error">
     <{foreach item=message from=$actionForm->getErrorMessages()}>
       <li><{$message|xoops_escape}></li>
     <{/foreach}>
   </ul>
 <{/if}>
-<form action="<{xoops_cooluri dirname=$dirname dataname=thumbnail action=edit}>" method="post" enctype="multipart/form-data">
-  <dl>
-  	<{*
-	  <dt><{$smarty.const._MD_LEIMG_LANG_DIRNAME}></dt>
-	  <dd>
-	  	<select name="dataset">
-	  	<{foreach item=dataset from=$clientList key=k}>
-	  		<option value="<{$dataset.dirname}> <{$dataset.dataname}>"<{if $dataset.dirname==$actionForm->get('dirname') && $dataset.dataname==$actionForm->get('dataname')}> selected="selected"<{/if}>><{$dataset.dirname}> - <{$dataset.dataname}></option>
-	  	<{/foreach}>
-	  	</select>
-	  </dd>
-		*}>
+<form class="form-horizontal" action="<{xoops_cooluri dirname=$dirname dataname=thumbnail action=edit}>" method="post" enctype="multipart/form-data">
+  <div class="control-group">
 	  <dt><{$smarty.const._MD_LEIMG_LANG_MAX_WIDTH}></dt>
 	  <dd><{xoops_input type=text name=max_width value=$actionForm->get('max_width') size=10}></dd>
-
-	  <dt><{$smarty.const._MD_LEIMG_LANG_MAX_HEIGHT}></dt>
+  </div>
+  <div class="control-group">
+      <dt><{$smarty.const._MD_LEIMG_LANG_MAX_HEIGHT}></dt>
 	  <dd><{xoops_input type=text name=max_height value=$actionForm->get('max_height') size=10}></dd>
-
-	  <dt><{$smarty.const._MD_LEIMG_LANG_TSIZE}></dt>
-	  <dd><{xoops_input type=text name=tsize value=$actionForm->get('tsize') size=10}></dd>
-
-    <dt></dt>
-    <dd>
+  </div>
+  <div class="control-group">
+    <dt><{$smarty.const._MD_LEIMG_LANG_TSIZE}></dt>
+    <dd><{xoops_input type=text name=tsize value=$actionForm->get('tsize') size=10}></dd>
+  </div>
+    <div class="form-actions">
       <{xoops_token form=$actionForm}>
       <{xoops_input type=hidden name=thumbnail_id value=$actionForm->get('thumbnail_id')}>
 		  <{xoops_input type=hidden name=file_type value=$actionForm->get('file_type')}>
 		  <{xoops_input type=hidden name=dirname value=$actionForm->get('dirname')}>
 		  <{xoops_input type=hidden name=dataname value=$actionForm->get('dataname')}>
-      <input type="submit" value="<{$smarty.const._SUBMIT}>" />
-      <input type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel" />
-    </dd>
-  </dl>
+      <button class="btn btn-primary" type="submit" value="<{$smarty.const._SUBMIT}>"><{$smarty.const._SUBMIT}></button>
+      <button class="btn" type="submit" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"><{$smarty.const._CANCEL}></button>
+    </div>
 </form>
 </div>

@@ -1,19 +1,21 @@
 <div id="leimg">
-<h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_DELETE}></h1>
 
-<div class="confirm"><{$smarty.const._MD_LEIMG_MESSAGE_CONFIRM_DELETE}></div>
+<div class="page-header">
+    <h1><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_DELETE}></h1>
+</div>
 
-<form action="./index.php?action=ThumbnailDelete" method="post">
-  <dl>
-  <dt><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_ID}></dt>
-  <dd><{$object->getShow('thumbnail_id')}></dd>
+<div class="alert alert-warning"><{$smarty.const._MD_LEIMG_MESSAGE_CONFIRM_DELETE}></div>
 
-    <dd>
+<form class="form-horizontal"  action="./index.php?action=ThumbnailDelete" method="post">
+  <div class="control-group">
+  <label><{$smarty.const._MD_LEIMG_LANG_THUMBNAIL_ID}></label>
+  <div class="controls"><{$object->getShow('thumbnail_id')}></div>
+  </div>
+    <div class="form-actions">
       <{xoops_token form=$actionForm}>
       <{xoops_input type=hidden name=thumbnail_id value=$actionForm->get('thumbnail_id')}>
-      <input type="submit" class="formButton" value="<{$smarty.const._DELETE}>"/>
-      <input type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"/>
-    </dd>
-  </dl>
+      <button class="btn btn-primary" type="submit" class="formButton" value="<{$smarty.const._DELETE}>"><{$smarty.const._DELETE}></button>
+      <button type="submit" class="formButton" value="<{$smarty.const._CANCEL}>" name="_form_control_cancel"><{$smarty.const._CANCEL}></button>
+    </div>
 </form>
 </div>
