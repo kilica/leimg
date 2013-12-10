@@ -18,18 +18,6 @@ require_once LEIMG_TRUST_PATH . '/class/AbstractEditAction.class.php';
 class Leimg_ImageEditAction extends Leimg_AbstractEditAction
 {
 	/**
-	 * _getId
-	 * 
-	 * @param	void
-	 * 
-	 * @return	int
-	**/
-	protected function _getId()
-	{
-		return $this->mRoot->mContext->mRequest->getRequest('image_id');
-	}
-
-	/**
 	 * &_getHandler
 	 * 
 	 * @param	void

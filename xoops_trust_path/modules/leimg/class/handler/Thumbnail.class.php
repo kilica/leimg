@@ -43,58 +43,66 @@ class Leimg_ThumbnailObject extends XoopsSimpleObject
 	 * 
 	 * @return	bool
 	**/
-	public function saveThumbnail(/*** Leimg_ImageObject ***/ $obj)
-	{
-		$ret = true;
-		$filePath = $obj->getFilePath($this->get('tsize'));
-		$orgFilePath = $obj->getFilePath();
-	
-		//create image source
-		switch($obj->getImageInfo('file_type')){
-		case Lenum_ImageType::JPG:	//2
-			$source = imagecreatefromjpeg($orgFilePath);
-			break;
-		case Lenum_ImageType::GIF:	//1
-			$source = imagecreatefromgif($orgFilePath);
-			break;
-		case Lenum_ImageType::PNG:	//3
-			$source = imagecreatefrompng($orgFilePath);
-			break;
-		default:
-			$ret = false;
-			break;
-		}
-	
-		//create resized image
-		$size = $this->_getResizedSize($obj->getImageInfo('width'),$obj->getImageInfo('height'));
-		$result = function_exists('imagecreatetruecolor') ? imagecreatetruecolor($size['width'],$size['height']) : imagecreate($size['width'],$size['height']);
-		if(!imagecopyresampled($result, $source,0,0,0,0,$size['width'],$size['height'],$obj->get('image_width'),$obj->get('image_height')))
-		{
-			die('failed to imagecopyresampled');
-		}
-	
-		//delete old thumbnails
-		if(file_exists($filePath)){
-			@unlink($filePath);
-		}
-	
-		//create thumbnail image
-		switch($obj->getImageInfo('file_type')){
-		case Lenum_ImageType::JPG:
-			imagejpeg($result, $filePath, self::QUALITY);
-			break;
-		case Lenum_ImageType::GIF:
-			imagegif($result, $filePath);
-			break;
-		case Lenum_ImageType::PNG:
-			imagepng($result, $filePath);
-			break;
-		default:
-			$ret = false;
-			break;
-		}
-		return $ret;
-	}
+    public function saveThumbnail(/*** Leimg_ImageObject ***/ $obj)
+    {
+        $ret = true;
+        $filePath = $obj->getFilePath($this->get('tsize'));
+        $orgFilePath = $obj->getFilePath();
+
+        //create resized image
+        $size = $this->_getResizedSize($obj->getImageInfo('width'),$obj->getImageInfo('height'));
+        $result = function_exists('imagecreatetruecolor') ? imagecreatetruecolor($size['width'],$size['height']) : imagecreate($size['width'],$size['height']);
+
+        //create image source
+        switch($obj->getImageInfo('file_type')){
+            case Lenum_ImageType::JPG:	//2
+                $source = imagecreatefromjpeg($orgFilePath);
+                break;
+            case Lenum_ImageType::GIF:	//1
+                $source = imagecreatefromgif($orgFilePath);
+                // set alpha channel
+                $alpha = imagecolortransparent($source);
+                imagefill($result, 0, 0, $alpha);
+                imagecolortransparent($result, $alpha);
+                break;
+            case Lenum_ImageType::PNG:	//3
+                $source = imagecreatefrompng($orgFilePath);
+                // set alpha channel
+                imagealphablending($result, false);
+                imagesavealpha($result, true);
+                break;
+            default:
+                $ret = false;
+                break;
+        }
+
+        if(!imagecopyresampled($result, $source,0,0,0,0,$size['width'],$size['height'],$obj->get('image_width'),$obj->get('image_height')))
+        {
+            die('failed to imagecopyresampled');
+        }
+
+        //delete old thumbnails
+        if(file_exists($filePath)){
+            @unlink($filePath);
+        }
+
+        //create thumbnail image
+        switch($obj->getImageInfo('file_type')){
+            case Lenum_ImageType::JPG:
+                imagejpeg($result, $filePath, self::QUALITY);
+                break;
+            case Lenum_ImageType::GIF:
+                imagegif($result, $filePath);
+                break;
+            case Lenum_ImageType::PNG:
+                imagepng($result, $filePath);
+                break;
+            default:
+                $ret = false;
+                break;
+        }
+        return $ret;
+    }
 
 	/** 
 	 * _getResizedSize

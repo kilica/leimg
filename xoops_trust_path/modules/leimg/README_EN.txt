@@ -21,6 +21,9 @@ Main Feature
 
 Update History
 --------------
+ver 0.5(2013.12.10)
+- Ready for the environment without exif extension
+
 ver 0.4(2011.09.09)
 - Update for latest interface
 

@@ -18,18 +18,6 @@ require_once LEIMG_TRUST_PATH . '/class/AbstractEditAction.class.php';
 class Leimg_ThumbnailEditAction extends Leimg_AbstractEditAction
 {
 	/**
-	 * _getId
-	 * 
-	 * @param	void
-	 * 
-	 * @return	int
-	**/
-	protected function _getId()
-	{
-		return $this->mRoot->mContext->mRequest->getRequest('thumbnail_id');
-	}
-
-	/**
 	 * _getTitle
 	 * 
 	 * @param	void

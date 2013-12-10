@@ -21,16 +21,19 @@ abstract class Leimg_AbstractEditAction extends Leimg_AbstractAction
 
 	public /*** XCube_ActionForm ***/ $mActionForm = null;
 
-	/**
-	 * _getId
-	 * 
-	 * @param	void
-	 * 
-	 * @return	int
-	**/
-	protected function _getId()
-	{
-	}
+    /**
+     * _getId
+     *
+     * @param   void
+     *
+     * @return  int
+     **/
+    protected function _getId()
+    {
+        $req = $this->mRoot->mContext->mRequest;
+        $dataId = $req->getRequest(_REQUESTED_DATA_ID);
+        return isset($dataId) ? intval($dataId) : intval($req->getRequest($this->_getHandler()->mPrimary));
+    }
 
 	/**
 	 * &_getHandler

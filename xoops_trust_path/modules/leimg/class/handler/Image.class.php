@@ -98,6 +98,19 @@ class Leimg_ImageObject extends Legacy_AbstractImageObject
         return $this->getBaseUrl($tsize) .'/'. $fileName;
     }
 
+    protected function _checkImageType($srcPath)
+    {
+        if (! function_exists('exif_imagetype')) {
+            if ((list($width, $height, $type, $attr) = getimagesize($srcPath)) !== false) {
+                return $type;
+            }
+            return false;
+        }
+        else{
+            return @exif_imagetype($srcPath);
+        }
+    }
+
     /**
      * is image file ?
      * 
@@ -108,7 +121,7 @@ class Leimg_ImageObject extends Legacy_AbstractImageObject
     public function isImage(/*** int ***/ $tsize=0)
     {
     	$srcPath = $this->getFilePath($tsize);
-        if(file_exists($srcPath) && @exif_imagetype($srcPath)!==false){
+        if(file_exists($srcPath) && $this->_checkImageType($srcPath)!==false){
         	return true;
         }
         else{
@@ -127,7 +140,7 @@ class Leimg_ImageObject extends Legacy_AbstractImageObject
     {
     	if(! isset($this->mIsBlank)){
             $srcPath = sprintf('%s/%s/%04d/%s.%s', XOOPS_UPLOAD_PATH, $this->getShow('dirname').'_'.$this->getShow('dataname'), intval($this->getShow('image_id') / 1000), $this->getShow('file_name'), Lenum_ImageType::getName($this->get('file_type')));
-	    	$this->mIsBlank = (file_exists($srcPath) && @exif_imagetype($srcPath)!==false) ? false : true;
+	    	$this->mIsBlank = (file_exists($srcPath) && $this->_checkImageType($srcPath)!==false) ? false : true;
 	    }
     	return $this->mIsBlank;
     
@@ -143,7 +156,7 @@ class Leimg_ImageObject extends Legacy_AbstractImageObject
     public function hasBlankImage()
     {
     	$srcPath = $this->getBasePath() .'/blank.'.LEGACY_IMAGE_DUMMY_EXT;
-        return (file_exists($srcPath) && @exif_imagetype($srcPath)!==false) ? true : false;
+        return (file_exists($srcPath) && $this->_checkImageType($srcPath)!==false) ? true : false;
     }
 
     /**
@@ -163,7 +176,7 @@ class Leimg_ImageObject extends Legacy_AbstractImageObject
         $class = isset($htmlClass) ? ' class="'.$htmlClass.'"' : null;
     
     	$title = $this->get('title');
-    	$alt = $title ? ' alt="'.$title.'"' : null;
+    	$alt = $title ? ' alt="'.$title.'"' : ' alt=""';
     	$w = $this->getImageInfo('width', $tsize);
     	$h = $this->getImageInfo('height', $tsize);
     	$width = isset($w) ? ' width="'.$w.'"' : null;
