@@ -21,7 +21,7 @@ require_once LEIMG_TRUST_PATH . '/class/LeimgUtils.class.php';
 // Define a basic manifesto.
 //
 $modversion['name'] = _MI_LEIMG_LANG_LEIMG;
-$modversion['version'] = 0.5;
+$modversion['version'] = 0.6;
 $modversion['description'] = _MI_LEIMG_DESC_LEIMG;
 $modversion['author'] = _MI_LEIMG_LANG_AUTHOR;
 $modversion['credits'] = _MI_LEIMG_LANG_CREDITS;

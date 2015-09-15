@@ -21,6 +21,9 @@ Main Feature
 
 Update History
 --------------
+ver 0.6(2015.09.15)
+- Fix Bug: Order of image.
+
 ver 0.5(2013.12.10)
 - Ready for the environment without exif extension
 

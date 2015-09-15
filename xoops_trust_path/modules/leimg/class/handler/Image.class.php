@@ -290,7 +290,13 @@ class Leimg_ImageHandler extends XoopsObjectGenericHandler
         if($num>0){
             $cri->add(new Criteria('num', $num));
         }
-        return $this->getObjects($cri, $limit, $start);
+        $images = $this->getObjects($cri, $limit, $start);
+        $result = array();
+        foreach($images as $image) {
+            $result[$image->get('num')] = $image;
+        }
+        ksort($result);
+        return $result;
     }
 
     /**
